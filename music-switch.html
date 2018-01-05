@@ -1,0 +1,35 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximun-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+            body {
+                background: #000;
+            }
+            .music-play {
+                -webkit-animation: spinning 4s linear infinite;
+                -o-animation: spinning 4s linear infinite;
+                animation: spinning 4s linear infinite;
+            }
+            @keyframes spinning {
+                0% {
+                    transform: rotate(0deg);
+                    -webkit-transform: rotate(0deg);
+                }
+                100% {
+                    -webkit-transform: rotate(360deg);
+                    -moz-transform: rotate(360deg);
+                    -ms-transform: rotate(360deg);
+                    -o-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <img src="./assets/images/musicPlay.png" alt="" class="music-play">
+    </body>
+</html>

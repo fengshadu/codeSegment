@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv = "X-UA-Compatible" content ="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="telephone=no" name="format-detection">
+<meta name="renderer" content="webkit"/>
+<title>动画页面切换</title>
+<meta content="" name="Keywords">
+<meta content="" name="Description">
+<link rel="stylesheet" href="css/base.css">
+<script src="js/jquery-2.1.1.min.js"></script>
+<style>
+html,body{ overflow:hidden;}
+.page-modal{ position:absolute; top:0; left:0; z-index:8; width:100%; background:#eee;transition:all 0.2s ease-out;-webkit-transition:all 0.2s ease-out;}
+.page-modal.fadeOut{ opacity:0; transform:translate(1024px,0);-webkit-transform:translate(1024px,0);}
+.page-modal.fadeIn{ opacity:1; transform:translate(0,0);-webkit-transform:translate(0,0);}
+.path{ position:absolute; left:0; top:0; z-index:1; width:100%; height:100%; border-radius:6px 0 0 0; transition:all 0.3s ease-out;-webkit-transition:all 0.3s ease-out;}
+.path .title{ width:100%; padding:10px 0 0 20px; }
+.path .title .icon-collaps{ display:none; float:left;  width:30px; height:30px; margin-right:5px; background:#000;}
+.path .title span{ float:left;display:inline-block; font-size:16px; padding:7px 0;}
+.path1{ top:50px; left:20px;background:#f36;}
+.path2{ top:100px; left:40px;background:#ff0;}
+.path3{ top:150px;left:60px;background:#09F;}
+.path4{ top:200px;left:80px;background:#093;}
+
+.path.prevAll{ top:0; left:0;border-radius:0;}
+.path.nextAll{ transform:translateX(1024px);-webkit-transform:translateX(1024px);}
+.path.prevAll .title .icon-collaps,.path.nextAll .title .icon-collaps{ display:block;}
+
+.pageModal-btn{ margin:20px; display:inline-block; padding:6px 7px; background:#f66;}
+.close-btn{ position:absolute; left:0; top:0; z-index:0; padding-left:20px; line-height:40px; font-size:16px; font-weight:bold; font-family:"宋体";}
+
+@media(min-width:1024px){
+	.media-page{ overflow:hidden; left:50%; width:480px; margin-left:-240px;}	
+}
+</style>
+</head>
+
+<body>
+
+<a class="pageModal-btn btn">点击打开</a>
+
+<div class="page-modal media-page fadeOut">
+	<div class="path1 path">
+    	<h2 class="title clearfix"><i class="icon-collaps"></i><span>标题1</span></h2>
+    </div>
+    <div class="path2 path">
+    	<h2 class="title clearfix"><i class="icon-collaps"></i><span>标题2</span></h2>
+    </div>
+    <div class="path3 path">
+    	<h2 class="title clearfix"><i class="icon-collaps"></i><span>标题3</span></h2>
+    </div>
+    <div class="path4 path">
+    	<h2 class="title clearfix"><i class="icon-collaps"></i><span>标题4</span></h2>
+    </div>
+    <a class="close-btn">X</a>
+</div>
+<script>
+$(function(){
+	var window_height=$(window).height();	
+	$(".page-modal").css({"height":window_height+'px'});
+	
+	$(".page-modal .path").click(function(){
+		$(this).addClass("prevAll").removeClass('nextAll').prevAll().addClass("prevAll").removeClass('nextAll').end().nextAll().addClass("nextAll").removeClass('prevAll');
+	});
+	$(".page-modal .path .title .icon-collaps").click(function(){
+			$(this).parents('.page-modal').find('.path').removeClass("nextAll prevAll");
+			return false;
+	});
+	$(".pageModal-btn").click(function(){
+		$(".page-modal").addClass("fadeIn").removeClass("fadeOut");
+		return false;	
+	})
+	$(".page-modal .close-btn").click(function(){
+		$(this).parent().addClass("fadeOut").removeClass("fadeIn");
+		return false;	
+	})
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv = "X-UA-Compatible" content ="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit"/>
+<title>娃娃机</title>
+<meta content="" name="Keywords">
+<meta content="" name="Description">
+<script src="js/lib/hotcss.js"></script>
+<script src="js/lib/jsDOM.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/page.style.css">
+<style>
+.wx-page{ padding-top:3rem;}
+.machine-box{ position:relative;height:16.08rem; margin:0 0.7rem; background:#f7f7f7;}
+.machine-box .machine-head{ position:relative;}
+.machine-box .machine-head:before{ content:""; display:block; height:0.6rem; background:#999;}
+.machine-box .machine-head .catch{ position:absolute; left:1.125rem; top:-0.55rem;width:2.25rem;transition:all 1s ease-out;-webkit-transition:all 1s ease-out;}
+.machine-box .machine-head .catch:before{ content:""; display:block; width:1.7rem; height:1.7rem; margin:auto; background:#0C6;}
+.machine-box .machine-head .catch .line{ width:1rem; height:2rem; margin:auto; background:#999; transition:all 1s ease-out 1s;-webkit-transition:all 1s ease-out 1s;}
+.machine-box .machine-head .catch .tool{ width:3.7rem; height:3.15rem; margin-left:-0.64rem; background:#f60;}
+.machine-box .machine-head .catch .icon-ragdoll{ display:none; bottom:-1.6rem; left:0;}
+.machine-box .machine-head .catch .icon-ragdoll[data-show]{ display:block; transition:none;-webkit-transition:none;}
+.machine-box .machine-head .catch .icon-ragdoll[data-succeed]{ transition:all 1s ease-out; -webkit-transition:all 1s ease-out;-webkit-transform: translate3d(0, 8rem, 0);transform: translate3d(0, 8rem, 0);}
+
+
+.machine-box .machine-body{ position:relative;height:15.4rem;}
+.machine-box .machine-body .wrap{position:absolute; left:0; bottom:0; width:100%;}
+.machine-box .machine-body .exit{ position:absolute; left:0; bottom:0; width:4.5rem; height:6.2rem; background:rgba(23,96,111,0.5);}
+.machine-box .machine-body .box{ position:relative; height:6.2rem;margin-left:4.5rem; background:rgba(51,102,0,0.3);}
+.icon-ragdoll{ position:absolute; width:2.5rem; height:2.5rem; background:rgba(255,255,0,0.5);}
+.icon-ragdoll[data-ragdoll='1']{ left:3rem; bottom:3rem;}
+.icon-ragdoll[data-ragdoll='2']{ left:1rem; bottom:0.1rem;}
+.icon-ragdoll[data-ragdoll='3']{ left:5rem; bottom:1rem;}
+.icon-ragdoll[data-ragdoll='4']{ left:7rem; bottom:2rem;}
+
+.machine-box .machine-footer .lottery-btn{ display:block; width:3rem; height:3rem; margin:1rem auto 0 auto; line-height:3rem; text-align:center; color:#fff; border-radius:50%; background:rgba(255,0,0,1);}
+</style>
+</head>
+
+<body>
+
+<div class="wx-page">
+	<div class="machine-box">
+    	<div class="machine-head">
+        	<!--抓取工具-->
+        	<div class="catch js_catch">
+            	<div class="line js_line"></div>
+            	<div class="tool"></div>
+                <i class="icon-ragdoll js_cRagdoll"></i>
+            </div>
+        </div>
+        <div class="machine-body js_body">
+        	 <div class="wrap">
+             	 <!--出口-->
+                 <div class="exit js_exit"></div>
+                 <!--布娃娃-->
+                 <div class="box js_box">
+                    <i class="icon-ragdoll js_ragdoll" data-ragdoll='1'></i>
+                    <i class="icon-ragdoll js_ragdoll" data-ragdoll='2'></i>
+                    <i class="icon-ragdoll js_ragdoll" data-ragdoll='3'></i>
+                    <i class="icon-ragdoll js_ragdoll" data-ragdoll='4'></i>
+                 </div>
+             </div>
+        </div>
+        <div class="machine-footer">
+        	<a class="lottery-btn js_lotteryBtn">抽奖</a>
+        </div>
+    </div>
+</div>
+
+<script>
+var js_body=Dan(".js_body")[0];
+var js_box=Dan(".js_box")[0];
+var js_exit=Dan(".js_exit")[0];
+var js_catch=Dan(".js_catch")[0];		//4.5rem
+var js_line=Dan(".js_line")[0];		//5.5rem
+
+var js_cRagdoll=Dan(".js_cRagdoll")[0];
+
+var js_ragdoll=Dan(".js_ragdoll");
+var js_lotteryBtn=Dan(".js_lotteryBtn")[0];
+js_lotteryBtn.onclick=function(){
+	if(String(js_lotteryBtn.dataset.click).match('true')) return false;
+	js_lotteryBtn.dataset.click=true;
+	var i=Math.floor(Math.random()*4);
+	var x=js_ragdoll[i].offsetLeft+js_exit.offsetWidth-js_catch.offsetLeft;  
+	var h=js_body.offsetHeight-js_box.offsetHeight-js_catch.offsetHeight+js_line.offsetHeight*2+js_ragdoll[i].offsetTop;
+	js_catch.style.webkitTransform="translate3d("+x+"px,0, 0)";
+	js_catch.style.transform="translate3d("+x+"px,0, 0)";
+	js_line.style.height=h+"px";
+	setTimeout(function(){
+		js_cRagdoll.dataset.show=true;
+		js_ragdoll[i].dataset.hide=true;
+		setTimeout(function(){
+			js_line.style.cssText="";
+			setTimeout(function(){
+				js_catch.style.cssText="";
+				setTimeout(function(){
+					js_cRagdoll.dataset.succeed=true;
+					setTimeout(function(){
+						delete js_cRagdoll.dataset.show;
+						delete js_cRagdoll.dataset.succeed;
+						delete js_ragdoll[i].dataset.hide;
+						delete js_lotteryBtn.dataset.click;
+					},2000)
+				},2000)	
+			},2000)
+		},1)
+	},2000);
+}
+</script>
+</body>
+</html>

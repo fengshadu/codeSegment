@@ -1,0 +1,271 @@
+@charset "utf-8";
+/* 浏览器重置 */
+html {
+    font-size: 10px;
+}
+
+body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+form,
+input,
+select,
+dl,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+article,
+aside,
+dialog,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+    display: block;
+}
+
+h1,
+h2,
+input,
+textarea,
+select {
+    font-size: 100%;
+    font-weight: 100;
+    vertical-align: middle;
+}
+
+ul,
+dl,
+ol {
+    list-style: none;
+}
+
+img,
+input {
+    border: none;
+}
+
+input {
+    outline: none;
+    background: transparent;
+    vertical-align: top;
+}
+
+textarea {
+    word-wrap: break-word;
+    resize: none;
+}
+
+input,
+textarea,
+select {
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    color: #C4C4C4;
+}
+
+::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+::-ms-check {
+    display: none;
+}
+
+body {
+    -webkit-text-size-adjust: none!important;
+    font-family: "Helvetica";
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: #808080;
+    background-color: #FFF;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    color: #4280f2;
+}
+
+
+/* ================== 弹性布局 ================== */
+
+.flex {
+    display: -webkit-box;
+    /* android 2.1-3.0, ios 3.2-4.3 */
+    display: -webkit-flex;
+    /* Chrome 21+ */
+    display: -ms-flexbox;
+    /* WP IE 10 */
+    display: flex;
+    /* android 4.4 */
+}
+
+.flex-direction-column {
+    /*  盒模型垂直布局  */
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.flex-1 {
+    -webkit-box-flex: 1;
+    /* android 2.1-3.0, ios 3.2-4.3 */
+    -webkit-flex: 1;
+    /* Chrome 21+ */
+    -ms-flex: 1;
+    /* WP IE 10 */
+    flex: 1;
+    /* android 4.4 */
+}
+
+.flex-pack-justify {
+    /* 水平布局下的子元素 2端对齐 */
+    -webkit-box-pack: justify;
+    /* android 2.1-3.0, ios 3.2-4.3 */
+    -webkit-justify-content: space-between;
+    /* Chrome 21+ */
+    -ms-flex-pack: justify;
+    /* WP IE 10 */
+    justify-content: space-between;
+    /* android 4.4 */
+}
+
+.flex-align-center {
+    /* 水平布局下的子元素 垂直居中 */
+    -webkit-box-align: center;
+    /* android 2.1-3.0, ios 3.2-4.3 */
+    -webkit-align-items: center;
+    /* Chrome 21+ */
+    -ms-flex-align: center;
+    /* WP IE 10 */
+    align-items: center;
+    /* android 4.4 */
+}
+
+.flex-pack-center {
+    /* 水平布局下的子元素 水平居中 */
+    -webkit-box-pack: center;
+    /* android 2.1-3.0, ios 3.2-4.3 */
+    -webkit-justify-content: center;
+    /* Chrome 21+ */
+    -ms-flex-pack: center;
+    /* WP IE 10 */
+    justify-content: center;
+    /* android 4.4 */
+}
+
+
+/* ================== 媒体查询 ================== */
+
+@media all and (min-width:375px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media all and (min-width:414px) {
+    html {
+        font-size: 11.5px;
+    }
+}
+
+/* 页面样式 */
+.pay {
+    position: relative;
+}
+.pay-amount-box {
+    width: 100%;
+    padding: .5rem;
+    box-sizing: border-box;
+}
+.amount-box-title {
+    font-size: 2rem;
+}
+.pay-amount-box a {
+    display: block;
+    width: 50%;
+    height: 4rem;
+    padding: .8rem 0;
+    background: #e2e2e2;
+    margin-bottom: .5rem;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #808080;
+
+}
+.pay-amount-box .orange {
+    background: #da5615;
+    color: #fff;
+}
+.pay-amount-box .oneline {
+    line-height: 4rem;
+}
+.amount-box a:first-child {
+    margin-right: .5rem;
+}
+
+/* 兼容ios 1px线 */
+.pay-amount-box {
+    position:relative;
+}
+.pay-amount-box:after {
+    
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #E5E5E5;
+    -webkit-transform: scaleY(.5);
+    -webkit-transform-origin: 0 0;
+    z-index: 3;
+    
+}
+
+.box-button {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0 .5rem;
+    box-sizing: border-box;
+    text-align: center;
+}
+.box-button p {
+    color: #b2b2b2;
+    line-height: 1.5;
+}
+.box-button .btn-recharge {
+    display: block;
+    width: 100%;
+    height: 2rem;
+    margin: .5rem 0 1rem;
+    color: 1.8rem;
+    line-height: 2rem;
+    box-sizing: border-box;
+    background: #da5615;
+    color: #fff;
+}

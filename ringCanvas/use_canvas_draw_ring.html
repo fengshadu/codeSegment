@@ -1,0 +1,80 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+            canvas {
+                background: #b2b2b2;
+            }
+        </style>
+    </head>
+    <body>
+         <canvas style="float:left;" id="step1Canvas" width='150' height='150'>
+            您的浏览器不支持HTML5，请尝试其他浏览器！
+        </canvas>
+        <script>
+
+        function circle(id,percent){
+            var p=(percent*100).toFixed(0);
+            // console.log(p);
+            var c=document.getElementById(id);
+            var cxt=c.getContext("2d");
+            //生成圆形（底圆）
+            cxt.fillStyle="#D0D0D0";
+            cxt.beginPath();
+            cxt.moveTo(75, 75); 
+            //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+            cxt.arc(75,75,70,0,Math.PI*2,false);
+            cxt.closePath();
+            cxt.fill();
+
+            //生成扇形
+            cxt.fillStyle="#0268BD";
+            cxt.beginPath();
+            cxt.moveTo(75, 75);
+            if(percent==1){
+                cxt.arc(75,75,70,0,Math.PI*2,false);
+            }else if(percent==0){
+                cxt.arc(75,75,70,0,0,true);
+            }else{
+                cxt.arc(75,75,70,Math.PI,Math.PI+Math.PI*2*percent,false);
+            }
+            cxt.closePath();
+            cxt.fill();
+            //生成圆形（上层园）
+            cxt.fillStyle="#FFFFFF";
+            cxt.beginPath();
+            cxt.moveTo(75, 75); 
+            cxt.arc(75,75,50,0,Math.PI*2,false);
+            cxt.closePath();
+            cxt.fill();
+            //生成中间百分比文字
+            cxt.font="20px arial";
+            cxt.fillStyle="#000000";
+            cxt.fillText(p+"%",55,75);
+         // cxt.fillText("0%",160,75);
+        }
+        /*
+         * 执行定时任务
+         * id：画布id
+         * start：初始百分比
+         * end：结束百分比
+         * interval：时间间隔
+         */
+        function timer(id,start,end,interval){
+            window.setTimeout(function(){
+                circle(id,start/100);
+                start++;
+                if(start<end+1){
+                    timer(id,start,end,interval);
+                }
+            },interval);
+        }
+        var canvas = document.getElementById('step1Canvas');
+        timer('step1Canvas', 0, 80, 100);
+        </script>
+    </body>
+</html>

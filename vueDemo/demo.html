@@ -1,0 +1,98 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+    </head>
+    <body>
+        <div id="app">
+            {{message}}
+        </div>
+
+        <div id="app2">
+            <span v-bind:title="message">
+                hover your mouse over me
+            </span>
+        </div>
+
+        <div id="app3">
+            <p v-if="seen">now you see me</p>
+        </div>
+
+        <div id="app4">
+            <ol>
+                <li v-for="todo in todos">
+                {{todo.text}}
+                </li>
+            </ol>
+        </div>
+
+        <div id="app5">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">Reverse MEssage</button>
+        </div>
+
+        <div id="app6">
+            <p>{{ message }}</p>
+            <input type="text" v-model="message">
+        </div>
+        <script src="../assets/js/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello world'
+                }
+            })
+
+            var app2 = new Vue({
+                el: '#app2',
+                data: {
+                    message:'you loader this page on' + new Date()
+                }
+            })
+
+            var app3 = new Vue({
+                el: '#app3',
+                data: {
+                    seen: true
+                }
+            })
+
+            var app4 = new Vue({
+                el: '#app4',
+                data: {
+                    todos: [
+                        {text: 'Learn JavaScript'},
+                        {text: 'Learn Java'},
+                        {text: 'Build something awesome'}
+                    ]
+                }
+            })
+
+            // 处理用户输入
+            var app5 = new Vue({
+                el: '#app5',
+                data:{
+                    message: 'hello Vue.js!'
+                },
+                methods: {
+                    reverseMessage: function() {
+                        this.message = this.message.split('').reverse().join('');
+                    }
+                }
+            });
+
+            var app6 = new Vue({
+                el: '#app6',
+                data: {
+                    message: 'hello vue'
+                }
+            })
+        </script>
+    </body>
+</html>

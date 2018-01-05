@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+      
+       .layer-loading span {
+            display: block;
+            width: 1.8rem;
+            height: 1.8rem;
+            margin: 0 auto;
+            background: url(./assets/images/load_small.png) no-repeat;
+            background-size: 1.8rem 1.8rem;
+        }
+        .rotate-circle {
+
+            -webkit-animation: rotate .5s linear infinite;
+            animation: rotate .5s linear infinite;
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotateZ(0);
+                -webkit-transform: rotateZ(0);
+            }
+            100% {
+                transform: rotateZ(360deg);
+                -webkit-transform: rotateZ(360deg);
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div class="layer-loading">
+            <span class="rotate-circle"><!-- Loading --></span>
+        </div>
+    </body>
+</html>

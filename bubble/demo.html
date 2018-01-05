@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv = "X-UA-Compatible" content ="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit"/>
+<title>css3 气泡效果</title>
+<meta content="" name="Keywords">
+<meta content="" name="Description">
+<link rel="stylesheet" href="css/base.css">
+<style>
+.icon-refuel{ float:left; display:block;width:68px; padding-top:68px;background:url(images/path1-bubble.png) no-repeat; background-size:cover;}
+.icon-refuel{ opacity:0;transform-origin:left bottom;-webkit-transform-origin:left bottom;}
+.icon-refuel:nth-child(1){-webkit-animation:refuelScale 4s linear infinite 0.5s;animation:refuelScale 4s linear infinite 0.5s;} 
+.icon-refuel:nth-child(2){-webkit-animation:refuelScale 4s linear infinite 1s;animation:refuelScale 4s linear infinite 1s;} 
+.icon-refuel:nth-child(3){-webkit-animation:refuelScale 4s linear infinite 1.5s;animation:refuelScale 4s linear infinite 1.5s;} 
+.icon-refuel:nth-child(4){-webkit-animation:refuelScale 4s linear infinite 2s;animation:refuelScale 4s linear infinite 2s;} 
+@-webkit-keyframes refuelScale{
+	0% {opacity : 0;-webkit-transform:scale(0.7) translate3d(0,15px,0); transform:scale(0.7) translate3d(0,15px,0);}
+	10% {opacity : 1;-webkit-transform:scale(1) translate3d(0,0,0); transform:scale(1) translate3d(0,0,0);}
+	60% {opacity : 1;}
+	70% {opacity : 0;}
+}
+@keyframes refuelScale{
+	0% {opacity : 0;-webkit-transform:scale(0.7) translate3d(0,15px,0); transform:scale(0.7) translate3d(0,15px,0);}
+	10% {opacity : 1;-webkit-transform:scale(1) translate3d(0,0,0); transform:scale(1) translate3d(0,0,0);}
+	60% {opacity : 1;}
+	70% {opacity : 0;}
+}
+
+@-webkit-keyframes titleScale{
+	0%{ -webkit-transform:scale(1);}
+	50%{ -webkit-transform:scale(1.02);}
+	100%{ -webkit-transform:scale(1);}
+}
+@keyframes titleScale{
+	0%{ transform:scale(1);}
+	50%{ transform:scale(1.02);}
+	100%{ transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<i class="icon-refuel"></i>
+<i class="icon-refuel"></i>
+<i class="icon-refuel"></i>
+<i class="icon-refuel"></i>
+
+
+</body>
+</html>

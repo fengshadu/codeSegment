@@ -1,0 +1,42 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+            canvas {
+                background-color: #b2b2b2;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <canvas id="canvas" width="400" height="400">can not support</canvas>
+        <script src="../assets/js/utils.js"></script>
+        <script src="../assets/js/arrow.js"></script>
+        <script>
+            window.onload = function() {
+                var canvas = document.getElementById('canvas'),
+                    context = canvas.getContext('2d'),
+                    mouse = utils.captureMouse(canvas),
+                    arrow = new Arrow();
+
+                arrow.x = canvas.width/2;
+                arrow.y = canvas.height/2;
+                (function drawFrame () {
+                    console.log('heh');
+                    window.requestAnimationFrame(drawFrame, canvas);
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+
+                    var dx = mouse.x - arrow.x,
+                        dy = mouse.y - arrow.y;
+                    arrow.rotation = Math.atan2(dy, dx);   //radians
+                    arrow.draw(context);
+                }());
+            }
+        </script>
+    </body>
+</html>

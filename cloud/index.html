@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv = "X-UA-Compatible" content ="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit"/>
+<title>css3云朵动画</title>
+<meta content="" name="Keywords">
+<meta content="" name="Description">
+<link rel="stylesheet" href="css/base.css">
+<style>
+html{ background:#f9d448;}
+
+.index-path{ background:url(images/path1-bg.jpg) no-repeat; background-size:cover;}
+
+/**云**/
+.icon-cloud{ position:absolute; width:10.468%; padding-top:10.468%; background:url(images/icon-cloud.png) no-repeat; background-size:cover;}
+.icon-cloud.min{width:8%; padding-top:8%;}
+.icon-cloud1{ top:12%; right:10%;-webkit-animation:icon-cloud5 200s ease-out infinite alternate 1s;animation:icon-cloud5 200s ease-out infinite alternate 1s;}
+.icon-cloud2{ top: 5%;right: 17%;-webkit-animation:icon-cloud6 200s ease-out infinite alternate 1s;animation:icon-cloud6 200s ease-out infinite alternate 1s;}
+.icon-cloud3{ top:3%; left:26%;-webkit-animation:icon-cloud5 200s ease-out infinite alternate 1s;animation:icon-cloud5 200s ease-out infinite alternate 1s;}
+.icon-cloud4{ top:10%; left:15%;-webkit-animation:icon-cloud6 200s ease-out infinite alternate 1s;animation:icon-cloud6 200s ease-out infinite alternate 1s;}
+.icon-cloud5{ top:30%; left:-11%;}
+.icon-cloud5{-webkit-animation:icon-cloud5 200s ease-out infinite alternate 1s;animation:icon-cloud5 200s ease-out infinite alternate 1s;}
+.icon-cloud6{ top:15%; right:-10%;}
+.icon-cloud6{-webkit-animation:icon-cloud6 200s ease-out infinite alternate 1s;animation:icon-cloud6 200s ease-out infinite alternate 4s;}
+.icon-cloud7{ top:10%; left:-12%;-webkit-animation:icon-cloud5 200s ease-out infinite alternate 10s;animation:icon-cloud5 300s ease-out infinite alternate 15s;}
+.icon-cloud8{ top:5%; right:-10%;-webkit-animation:icon-cloud6 200s ease-out infinite alternate 14s;animation:icon-cloud6 300s ease-out infinite alternate 20s;}
+@-webkit-keyframes icon-cloud5{
+	0%{-webkit-transform:translate3d(0,0px,0);}
+	100%{-webkit-transform:translate3d(768px,0,0);}
+}
+@keyframes icon-cloud5{
+	0%{transform:translate3d(0,0,0);}
+	100%{transform:translate3d(768px,0,0);}
+}
+@-webkit-keyframes icon-cloud6{
+	0%{-webkit-transform:translate3d(0,0px,0);}
+	100%{-webkit-transform:translate3d(-768px,0,0);}
+}
+@keyframes icon-cloud6{
+	0%{transform:translate3d(0,0,0);}
+	100%{transform:translate3d(-768px,0,0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="weixin-page">
+	<div class="index-path path">
+    	
+        <i class="icon-cloud1 icon-cloud min"></i>
+        <i class="icon-cloud2 icon-cloud"></i>
+        <i class="icon-cloud3 icon-cloud min"></i>
+        <i class="icon-cloud4 icon-cloud"></i>
+        <i class="icon-cloud5 icon-cloud"></i>
+        <i class="icon-cloud6 icon-cloud min"></i>
+        <i class="icon-cloud7 icon-cloud"></i>
+        <i class="icon-cloud8 icon-cloud min"></i>
+        
+        
+    </div>
+</div>
+
+<script>
+
+var path=document.getElementsByClassName("path")[0];
+var page_init=function(){
+	var body_height=document.documentElement.clientHeight || window.screen.height ||　window.screen.availHeight;
+	path.style.height=body_height+"px";
+}
+page_init();
+window.onresize=page_init;
+
+
+</script>
+</body>
+</html>

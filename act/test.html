@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSS3下雨场景 - 琼台博客</title>
+        <style type="text/css">
+            * { background: black; margin:0; padding:0; overflow:hidden; }  
+
+            .line-range {
+                position:absolute;
+                background:none;
+                height: 100%;
+                width: 1000px;
+            }
+
+            .line {
+                width: 150px;
+                height: 1px;
+                background: -moz-linear-gradient(right, #FFF, #000);
+                background: -webkit-gradient(linear, 100% 0, 0% 100%, from(#FFF), to(#000));
+                position:absolute;
+                left:0;
+                top:40px;
+                -webkit-transform: rotate(135deg);
+                transform: rotate(135deg);
+                -webkit-animation:line 4s ease-in infinite;
+                animation:line 4s ease-in infinite;
+            }
+
+            @keyframes line {
+                0% { opacity:0.7; top:-200px; left:100%; }
+                100% { opacity:1; top:100%; left:0; }
+            }
+
+            @-webkit-keyframes line {
+                0% { opacity:0.7; top:-200px; left:100%; }
+                100% { opacity:1; top:100%; left:0; }
+            }
+
+            .circle-range {
+                position:absolute;
+                background:none;
+                height: 100px;
+                width: 200px;
+                
+            }
+
+            .circle {
+                position:absolute;
+                left:0;
+                right:0;
+                top:0;
+                bottom:0;
+                margin:auto;
+                background:none;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                border: 1px solid #FFF;
+                border-radius: 50%;
+                -webkit-animation:circle 1s ease-out infinite ;
+                animation:circle 1s ease-out infinite;
+            }
+
+            @keyframes circle {
+                0% { width:0; height:0; }
+                50% { opacity:1; width:100%; height:100%; }
+                60% { opacity:0; width:100%; height:100%; }
+                100% { opacity:0; width:100%; height:100%; }
+            }
+
+            @-webkit-keyframes circle {
+                0% { width:0; height:0; }
+                50% { opacity:1; width:100%; height:100%; }
+                60% { opacity:0; width:100%; height:100%; }
+                100% { opacity:0; width:100%; height:100%; }
+            }
+
+            
+        </style>
+
+        <script type="text/javascript">
+            (function(window){
+                var App = function(element,num){
+                    this.num = num; 
+                    this.element = element;
+                    this.lines = [];
+                    this.circles = [];
+                    this.init();
+                };
+
+                App.prototype.randint = function(n,m){
+                    var c = m-n+1;
+                    var num = Math.random() * c + n;
+                    return  Math.floor(num);
+                };
+
+                App.prototype.createLine = function(){
+                    var line_range = document.createElement("div");
+                    var line = document.createElement("line");
+                    line_range.style.left = this.randint(-50, 100) + "%";
+                    line_range.style.marginTop = "-" + this.randint(0, 70) + "%";
+                    line_range.style.opacity = this.randint(2, 10) / 10;
+                    line_range.className = "line-range";
+                    line.className = "line";
+                    line_range.appendChild(line);
+                    return line_range;
+                };
+
+                App.prototype.createCircle = function(){
+                    var circle_range = document.createElement("div");
+                    var circle = document.createElement("line");
+                    circle_range.style.left = this.randint(-20, 99) + "%";
+                    circle_range.style.top = this.randint(50, 100) + "%";
+                    circle_range.style.opacity = this.randint(2, 10) / 10;
+                    circle_range.className = "circle-range";
+                    circle.className = "circle";
+                    circle_range.appendChild(circle);
+                    return circle_range;
+                };
+
+                App.prototype.build = function(){
+                    var i, k;
+                    for(i=0; i<this.num; i++){
+                        this.lines.push(this.createLine());
+                    }
+                    
+                    k = Math.ceil(this.num/3);
+                    for(i=0; i<k; i++){
+                        this.circles.push(this.createCircle());
+                    }
+                };
+
+                App.prototype.run = function(){
+                    var _this=this, i, k;
+
+                    k =  _this.lines.length;
+                    for(i=0; i<k; i++){
+                        (function(element, app){
+                            window.setTimeout(function(){
+                                app.element.appendChild(element); 
+                            }, app.randint(100, 3000));  
+                        })(_this.lines[i], _this);
+                    }
+
+                    k = _this.circles.length;
+                    for(i=0; i<k; i++){
+                        (function(element, app){
+                            window.setTimeout(function(){
+                                app.element.appendChild(element); 
+                            }, app.randint(2000, 5000)); 
+                        })(_this.circles[i], _this);
+                    }
+                };
+            
+                App.prototype.init = function(){
+                    this.build();
+                    this.run();
+                };           
+
+                window.App = App;
+                     
+            })(window); 
+
+            window.onload = function(){
+                new App(document.body, Math.floor(document.body.clientWidth / 7));
+            };
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

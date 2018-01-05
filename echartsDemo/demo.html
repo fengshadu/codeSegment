@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no">
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/echarts.min.js"></script>
+</head>
+<style>
+* {
+	font-size:12px;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+}
+.echarts{ overflow:hidden; height:350px;}
+</style>
+<body>
+
+
+    <div id="echarts1" class="echarts"></div>
+    
+    
+    <div id="echarts2" class="echarts"></div>
+
+</body>
+<script>
+
+
+var echarts_loaddata=function(obj,data){
+ // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(obj);
+	
+	var option = {
+		/*
+		//绘制开始坐标x，y，左上角顶点为原点
+		grid:{
+			x:80,
+			y:20	
+		},*/
+		tooltip : {
+			trigger: 'axis',	//'item' | 'axis'  item：圆点才触发提示
+			backgroundColor:'rgb(255,255,255)',
+			borderColor:'rgb(255,82,82)',
+			textStyle:{ color:'#666',fontSize:12},
+			borderWidth:1,
+			padding:[3,5,3,5],
+			axisPointer:{
+				type: 'none',	
+			}
+		},
+		toolbox: {
+			show : true,
+			feature : {
+				mark : {show: true},
+				magicType : {show: true, type: ['line', 'bar']},
+				restore : {show: true},
+				//saveAsImage : {show: true}
+			}
+		},
+		clickable:false,
+		xAxis:[{
+			  axisLine:{
+				  lineStyle:{
+					color:"#666"	
+			  	  }
+			  },
+			  splitLine:false,	
+			  type: 'category',
+			  data: data.time,		//投资月份数组
+		}],
+		yAxis:[{	  
+		  	  axisLine:{
+				  lineStyle:{
+					color:"#666"	
+			  	  }
+			  },
+		      splitLine:false,	
+			  type : 'value',
+			  axisLabel : {
+				  formatter: '￥{value}'
+			  }
+		}],
+		series: [
+			{   
+				name: '投资额(￥)',
+				type: 'line',
+				//stack: '投资额',
+				label: {
+					normal: {
+						//show: true,
+						//position: 'insideRight'
+					}
+				},
+				data: data.money,		//投资金额数组
+				
+			}
+		]
+	};
+
+	// 使用刚指定的配置项和数据显示图表。
+	myChart.setOption(option);
+
+}
+
+
+var echarts1=document.getElementById('echarts1');
+var echarts2=document.getElementById('echarts2');
+
+//模拟ajax返回的json
+var ajax_obj=[
+	{"time":'2016年01月',"money":32000.06},
+	{"time":'2016年02月',"money":31000.06},
+	{"time":'2016年03月',"money":30000.06},
+	{"time":'2016年04月',"money":29000.06},
+	{"time":'2016年05月',"money":28000.06},
+	{"time":'2016年06月',"money":27000.06},
+]
+//趋势统计图数组
+var trend_obj={
+	time:[],
+	money:[]
+};
+$.each(ajax_obj,function(a,b){
+	trend_obj.time[a]=b.time;
+	trend_obj.money[a]=b.money;
+});
+//console.log(trend_obj);
+
+//趋势统计图数组
+/*
+var trend_obj={
+	time:['2016年01月','2016年02月','2016年03月','2016年04月','2016年05月','2016年06月'],   //投资月份数组
+	data:[32000.06, 30200.05, 30100.04, 33400.03, 39000.02, 33000.01], //投资金额数组
+}*/
+echarts_loaddata(echarts1,trend_obj);		//初始化统计图
+echarts_loaddata(echarts2,trend_obj);		//初始化统计图
+
+//http://echarts.baidu.com/echarts2/doc/doc.html  插件API
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+            canvas {
+                background-color: #b2b2b2;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width="400" height="400">can not support</canvas>
+        <script src="../assets/js/utils.js"></script>
+        <script>
+            window.onload = function() {
+                var canvas = document.getElementById('canvas'),
+                    touch = utils.captureTouch(canvas);
+                    
+
+                function onTouchEvent (event) {
+                    console.log(event.type);
+                    if (event.type == "touchmove") {
+                        console.log(touch.isPressed);
+                        console.log(touch.x);
+                        console.log(touch.y);
+                    }
+                }
+
+
+                canvas.addEventListener('touchstart', onTouchEvent, false);
+                canvas.addEventListener('touchend', onTouchEvent, false);
+                canvas.addEventListener('touchmove', onTouchEvent, false);
+                // 如果是按压，就显示xy坐标
+                
+
+            }
+        </script>
+    </body>
+</html>

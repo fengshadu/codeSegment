@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        .lay-close {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            padding: 12px;
+        }
+        .css-close {
+            position: relative;
+            width: 12px;
+            height: 12px;
+        }
+        .css-close span {
+            position: absolute;
+            top: 6px;
+            left: 0;
+            display: inline-block;
+            width: 12px;
+            height: 1px;
+            background-color: #b2b2b2;
+        }
+        .css-close span:nth-child(1) {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+        .css-close span:nth-child(2) {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+        </style>
+    </head>
+    <body>
+        <div class="lay-close">
+            <div class="css-close">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+/*
+  css3 圆环效果
+  效果原理：利用两个半圆圈，通过无缝旋转，达到圆环效果
+  
+  
+  如果是图片，应该是利用360张不同角度的图片（一个圆360度），做css sprite，背景动画偏移
+*/
+
+*{ margin:0; padding:0; font-size:12px; }
+.arc-box{ position:relative;width:110px; height:110px;}
+.arc-box .arc,.arc-box .pie{position:absolute;width:100px; height:100px;border-radius:50%;behavior:url(pie.htc); }  /*圆*/
+.arc-box .pie{background:#e8f5fa;}  	/*暗-背景颜色1*/
+.arc-box .pie1{transition:all 1s cubic-bezier(0.5,0.5,0.5,0.5);}	/*创建css3过渡，时间1s，过程均速*/
+.arc-box .pie2{transition:all 0.5s cubic-bezier(0.5,0.5,0.5,0.5);}  /*创建css3过渡，时间0.5s，过程均速*/
+.arc-box .arc1,.arc-box .pie1{ clip:rect(0px,100px,100px,50px);}	/*css3裁切：右半边*/
+.arc-box .arc2,.arc-box .pie2{ clip:rect(0px,50px,100px,0px);}		/*css3裁切：左半边*/
+.arc-box .bg{ width:100px; height:100px;border-radius:50%;background:#f5bf00;behavior:url(pie.htc);}  /*亮-背景颜色2*/
+.arc-box .center{ position:absolute; left:2px; top:2px; width:96px; height:96px;border-radius:50%;font-size:12px; text-align:center; line-height:96px; background:#fff;behavior:url(pie.htc);}	/*中间内容*/
+</style>
+</head>
+
+<body style="padding:100px;">
+
+<div class="arc-box">
+    <div class="arc arc1"> <!--右半边-->
+        <div class="pie pie1"></div>	 <!--第一个圆-->
+    </div>
+    <div class="arc arc2">  <!--左半边-->
+        <div class="pie pie2"></div>	 <!--第二个圆-->
+    </div>
+    <div class="center"></div>	<!--中间内容-->
+    <div class="bg"></div>		<!---背景颜色2-->
+</div>
+
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+$( function(){
+	var deg =80*3.6;	/*角度大小*/
+	var deg2=0;
+	if(deg>=0 && deg<=180){  //0=<deg=<180，如果小于等于180度，只旋转第一个圆
+		$(".pie1").css("transform","rotate(" + deg + "deg)");	
+	}else if(deg>180 && deg<=360){  //180<deg=<360，大于180，需要旋转两个圆
+		$(".pie1").css("transform","rotate(" +180 + "deg)");	//第一个圆先旋转180度
+		deg2=deg-180;	//得到第二个圆圈的角度
+		setTimeout( function(){	
+			$(".pie2").css("transform","rotate(" + deg2 + "deg)");	//1秒后，旋转第二个圆
+		},1000)		//第一个圆创建的过渡时间为1秒
+	}else{
+		deg=0;	
+	}
+	//角度和百分比的关系：360/3.6=100
+	deg =parseInt(deg/3.6);   
+	$(".center").text(deg+'%');
+	
+})
+</script>
+</body>
+</html>

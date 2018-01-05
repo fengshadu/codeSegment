@@ -1,0 +1,52 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+            
+        </style>
+    </head>
+    <body>
+         <canvas id="canvas">not supported</canvas>
+
+         <script>
+             var sliceSize = 9;
+             var slicePercent = [];
+
+             slicePercent[0] = 0.2;
+             slicePercent[1] = 0.1;
+             slicePercent[2] = 0.1;
+             slicePercent[3] = 0.1;
+             slicePercent[4] = 0.1;
+             slicePercent[5] = 0.1;
+             slicePercent[6] = 0.1;
+             slicePercent[7] = 0.1;
+             slicePercent[8] = 0.1;
+            var chartColors = ['#fbcb43', '#64b044', '#dc4437', '#dc4437','#4385f5','#fbcb43', '#64b044', '#dc4437', '#dc4437'];
+            var chartRadius = ['40', '40', '40', '40', '40', '40', '40', '40', '40'];
+            var startAngel = ['40', '40', '40', '40', '40', '40', '40', '40', '40'];
+
+             var centerX = 50,
+                centerY = 50;
+
+             var canvas = document.getElementById('canvas');
+             var cxt = canvas.getContext('2d');
+
+             for(var i =0; i<sliceSize; i++) {
+                cxt.save();
+                cxt.beginPath();
+                cxt.moveTo(centerX, centerY, chartRadius[i], startAngel[i], startAngel[i+1], false);
+                cxt.lineTo(centerX, centerY);
+                cxt.closePath();
+                cxt.fillStyle = chartColors[i];
+                cxt.fill();
+             }
+
+
+         </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv = "X-UA-Compatible" content ="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit"/>
+<title>火炬接力</title>
+<meta content="" name="Keywords">
+<meta content="" name="Description">
+<link rel="stylesheet" href="css/base.css">
+<style>
+
+html,body{ overflow:hidden; position:absolute; left:0; top:0; width:100%; height:100%; background:#093;}
+
+/*水泡*/
+.icon-bubble{ position:absolute; width:10%; padding-top:10%; border-radius:50%; background:rgba(255,255,255,0.8); opacity:0;}
+.icon-bubble1{ left:20%; }
+.icon-bubble2{ left:30%;}
+.icon-bubble3{ left:40%;}
+.icon-bubble4{ left:50%;}
+.icon-bubble5{ left:60%;}
+.icon-bubble6{ left:70%;}
+@-webkit-keyframes bubbleTranslate{
+		0%{-webkit-transform: translate3d(0,120%, 0);transform: translate3d(0,120%, 0);opacity:0}
+		100%{-webkit-transform: translate3d(0,-120%, 0);transform: translate3d(0,-120%, 0);opacity:1}
+}
+@keyframes bubbleTranslate{
+	0%{top:120%;opacity:0}
+	100%{top:-100%;opacity:1}
+}
+.icon-bubble1{-webkit-animation:bubbleTranslate 6s infinite linear 1s;animation:bubbleTranslate 6s infinite linear 1s}
+.icon-bubble2{-webkit-animation:bubbleTranslate 6s infinite linear 3s;animation:bubbleTranslate 6s infinite linear 3s}
+.icon-bubble3{-webkit-animation:bubbleTranslate 6s infinite linear 2s;animation:bubbleTranslate 6s infinite linear 2s}
+.icon-bubble4{-webkit-animation:bubbleTranslate 6s infinite linear 0.5s;animation:bubbleTranslate 6s infinite linear 0.5s}
+.icon-bubble5{-webkit-animation:bubbleTranslate 6s infinite linear 2.5s;animation:bubbleTranslate 6s infinite linear 2.5s}
+.icon-bubble6{-webkit-animation:bubbleTranslate 6s infinite linear 1.5s;animation:bubbleTranslate 6s infinite linear 1.5s}
+
+</style>
+</head>
+
+<body>
+
+
+<i class="icon-bubble1 icon-bubble"></i>
+<i class="icon-bubble2 icon-bubble"></i>
+<i class="icon-bubble3 icon-bubble"></i>
+<i class="icon-bubble4 icon-bubble"></i>
+<i class="icon-bubble5 icon-bubble"></i>
+<i class="icon-bubble6 icon-bubble"></i>
+
+
+</body>
+</html>

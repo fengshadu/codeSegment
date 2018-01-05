@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv = "X-UA-Compatible" content ="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+<meta name="renderer" content="webkit"/>
+<title>数字用图片显示</title>
+<link rel="stylesheet" href="css/base.css">
+<style>
+/* CSS Document */
+body{font: 12px tahoma,arial,'Hiragino Sans GB','\5FAE\8F6F\96C5\9ED1','\5b8b\4f53',sans-serif;}
+div,li,span,img{ box-sizing:border-box;}
+
+/*首页*/
+.banner{ position:relative; padding-top:60.3125%; background:#f00; background-size:cover;}  /*背景图片-自定义补充*/
+.banner-fund{ position:absolute; left:25%; top:40%; z-index:2; width:50%;}
+.banner-fund li{ position:relative; float:left; width:12.5%; padding-top:25%; background:url(images/icon-block.png) no-repeat; background-size:100% 100%;}
+.banner-fund li:before{ content:""; position:absolute; left:0; top:0; z-index:8; width:100%; height:100%;  background-image:url(images/icon-moneyber.png); background-repeat:no-repeat;background-size:100% 1000%;}
+.banner-fund li[data-fund='0']:before{background-position:0% 0%;}
+.banner-fund li[data-fund='1']:before{background-position:0% 11%;}
+.banner-fund li[data-fund='2']:before{background-position:0% 22.2%;}
+.banner-fund li[data-fund='3']:before{background-position:0% 33.3%;}
+.banner-fund li[data-fund='4']:before{background-position:0% 44.4%;}
+.banner-fund li[data-fund='5']:before{background-position:0% 55.5%;}
+.banner-fund li[data-fund='6']:before{background-position:0% 66.6%;}
+.banner-fund li[data-fund='7']:before{background-position:0% 77.7%;}
+.banner-fund li[data-fund='8']:before{background-position:0% 88.8%;}
+.banner-fund li[data-fund='9']:before{background-position:0% 99.9%;}
+
+
+@media (min-width:640px){
+	body{ width:640px; margin:auto;}	
+}
+
+
+/*
+padding-top:60.3125%;  相当于高度%， 子元素高度/父元素宽度=上填充%
+
+width:12.5%;  有8个li，8 x 12.5=100%
+
+position:absolute;width:100%; height:100%; 绝对定位后，宽度必须设置，高度%有效果
+
+background-size:100% 1000%;  x100% y1000% ：x100%是水平达到最大，y1000%是垂直放大10倍，因为图片是十等份的长方形图片，可得到其中一等份
+
+*/
+</style>
+</head>
+
+<body>
+
+        <div class="banner">
+            <ul class="banner-fund"> <!--奖金纯数字-->
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+
+<script type="text/javascript">
+
+		
+		var str=521314;  			//得到具体数字	
+		var balance=100000000;		
+		balance+=str;				//数字小于八位数，前面补零
+		balance=String(balance).substr(1,8);
+		var list=document.querySelectorAll('li');
+		for(var i=0;i<balance.length;i++){
+			list[i].dataset.fund=balance.substring(i,i+1);
+		}
+
+</script>
+</body>
+</html>

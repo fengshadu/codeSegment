@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        .star-five {
+            position: relative;
+            margin: 0 auto 3rem;
+            -webkit-transform: rotate(35deg);
+            transform: rotate(35deg);
+        }
+
+        .star-five:before,
+        .star-five:after {
+            content: "";
+        }
+        .star-five:before {
+            position: absolute;
+            top: -11px;
+            left: -14px;
+            height: 0;
+            width: 0;
+            display: inline-block;
+            -webkit-transform: rotate(-35deg);
+            transform: rotate(-35deg);
+            border-bottom: 16px solid #fc0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+        }
+
+        .star-five:after {
+            position: absolute;
+            top: 0;
+            left: -21px;
+            -webkit-transform: rotate(-70deg);
+            transform: rotate(-70deg);
+        }
+        .star-five, .star-five:after {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-right: 20px solid transparent;
+            border-bottom: 14px solid #fc0;
+            border-left: 20px solid transparent;
+        }
+        .star-five.star-none:before {
+            border-bottom: 16px solid #e6e6e6;
+        }
+        .star-five.star-none, .star-five.star-none:after {
+            border-bottom: 14px solid #e6e6e6;
+        }
+       
+        </style>
+    </head>
+    <body>
+        <p><!--星星变灰色："star-five"加上"star-none"-->
+            <span class="star-five"></span>
+            <span class="star-five"></span>
+            <span class="star-five"></span>
+            <span class="star-five"></span>
+            <span class="star-five star-none"></span>
+        </p>
+    </body>
+</html>

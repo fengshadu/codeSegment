@@ -1,0 +1,332 @@
+﻿<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="uft-8">
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <script>
+            function refreshRem() {
+                var width = window.document.documentElement.getBoundingClientRect().width;
+                var rem = width / 10;
+                window.document.documentElement.style.fontSize = rem + 'px';
+            }
+            //实现响应的代码，业务无关
+            (function(win) {
+                var doc = win.document;
+                var docEl = doc.documentElement;
+                var tid;
+
+                var u = navigator.userAgent,
+                    app = navigator.appVersion;
+                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                if (isAndroid === true) {
+                    win.addEventListener('devicemotion', function() {
+                        //location.reload();
+                        // clearTimeout(tid);
+                        tid = setTimeout(refreshRem, 100);
+                    }, false);
+                } else if (isiOS === true) {
+                    win.addEventListener("onorientationchange", function() {
+                        //location.reload();
+                        // clearTimeout(tid);
+                        tid = setTimeout(refreshRem, 100);
+                    });
+                }
+                win.addEventListener('resize', function() {
+                    //location.reload();
+                    // clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 100);
+                }, false);
+                win.addEventListener('pageshow', function(e) {
+                    if (e.persisted) {
+                        // clearTimeout(tid);
+                        tid = setTimeout(refreshRem, 100);
+                    }
+                }, false);
+
+                setTimeout(refreshRem, 800);
+                refreshRem();
+
+
+
+            })(window);
+        </script>
+        <style>
+           .p1_title {
+               position: absolute;
+               width: 3.2rem;
+               height: 0.77rem;
+               top: 0.36rem;
+               left: 1.44rem;
+               z-index: 2;
+               opacity: 0;
+           }
+            .active .p1_title {
+               animation: fadeInLeft 1s linear .5s forwards;
+               -webkit-animation: fadeInLeft 1s linear .5s forwards;
+           } 
+           body {
+            background: #000;
+           }
+           img {
+            max-width: 100%;
+           }
+            .p1_title1 {
+               position: absolute;
+               top: 0;
+               left: 0;
+               width: inherit;
+               opacity: 1;
+           }
+            .p1_title2, .p1_title3 {
+               position: absolute;
+               top: 0;
+               left: 0;
+               width: inherit;
+               opacity: 0;
+            }
+           
+            .active .p1_title2 {
+               animation: bg 2s linear 1.7s infinite;
+               -webkit-animation: bg 2s linear 1.7s infinite;
+            }
+            .active .p1_title3 {
+              animation: bg 2s linear 2s infinite;
+              -webkit-animation: bg 2s linear 2s infinite;
+            } 
+
+            /* 标题的背景星星 */
+            .p1_title_light {
+                position: absolute;
+                width: 4.65rem;
+                top: 0.09rem;
+                left: 0.58rem;
+                z-index: 1;
+                opacity: 0;
+            }
+            .active .p1_title_light {
+                animation: winkle 1s linear 1.6s forwards;
+                -webkit-animation: winkle 1s linear 1.6s forwards;
+            }
+
+            /* 右下角星星 */
+            .p1_title_star1 {
+                position: absolute;
+                width: 0.28rem;
+                top: 0.77rem;
+                left: 3.24rem;
+                z-index: 8;
+                opacity: 0;
+            }
+            .p1_title_star2 {
+                position: absolute;
+                width: 0.62rem;
+                top: 0.56rem;
+                left: 3.41rem;
+                z-index: 8;
+                opacity: 0;
+            }
+            
+            .p1_dress_star1 {
+                position: absolute;
+                width: 0.28rem;
+                top: 2.46rem;
+                left: 6.82rem;
+                z-index: 8;
+                opacity: 0;
+            }
+
+            .p1_dress_star2 {
+                position: absolute;
+                width: 0.28rem;
+                top: 3.96rem;
+                left: 6.72rem;
+                z-index: 8;
+                opacity: 0;
+            }
+
+            .p1_dress_star3 {
+                position: absolute;
+                width: 0.28rem;
+                top: 3.86rem;
+                left: 7.02rem;
+                z-index: 8;
+                opacity: 0;
+            }
+
+            .p1_dress_star4 {
+                position: absolute;
+                width: 0.28rem;
+                top: 2.86rem;
+                left: 6.82rem;
+                z-index: 8;
+                opacity: 0;
+            }
+
+            .p1_dress_star5 {
+                position: absolute;
+                width: 0.28rem;
+                top: 3.46rem;
+                left: 6.52rem;
+                z-index: 8;
+                opacity: 0;
+            }
+
+            .p1_dress_star6 {
+                position: absolute;
+                width: 0.28rem;
+                top: 3.76rem;
+                left: 6.72rem;
+                z-index: 8;
+                opacity: 0;
+            }
+            .active .p1_dress_star1 {
+                animation: star 1.8s linear 1.5s infinite;
+                -webkit-animation: star 1.8s linear 1.5s infinite;
+            }
+
+            .active .p1_dress_star2 {
+                animation: star 1.8s linear 1.7s infinite;
+                -webkit-animation: star 1.8s linear 1.7s infinite;
+            }
+
+            .active .p1_dress_star3 {
+                animation: star 1.8s linear 1.9s infinite;
+                -webkit-animation: star 1.8s linear 1.9s infinite;
+            }
+
+            .active .p1_dress_star4 {
+                animation: star 1.8s linear 2.1s infinite;
+                -webkit-animation: star 1.8s linear 2.1s infinite;
+            }
+
+            .active .p1_dress_star5 {
+                animation: star 1.8s linear 2.3s infinite;
+                -webkit-animation: star 1.8s linear 2.3s infinite;
+            }
+
+            .active .p1_dress_star6 {
+                animation: star 1.8s linear 2.5s infinite;
+                -webkit-animation: star 1.8s linear 2.5s infinite;
+            }
+
+            .p1_dress_star1 {
+                position: absolute;
+                width: 0.28rem;
+                top: 2.46rem;
+                left: 6.82rem;
+                z-index: 8;
+                opacity: 0;
+            }
+
+            .active .p1_title_star1 {
+                animation: winkle 1.4s linear 2s infinite alternate;
+                -webkit-animation: winkle 1.4s linear 2s infinite alternate;
+            }
+            .active .p1_title_star2 {
+                animation: winkle 1.4s linear 2.8s infinite alternate;
+                -webkit-animation: winkle 1.4s linear 2.8s infinite alternate;
+            }
+            @keyframes bg {
+                0%, 25%, 100% {
+                    opacity: 0;
+                }
+                10%, 15% {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeInLeft {
+                0% {
+                    opacity: 0;
+                    -webkit-trasnform: translate3d(-100%, 0, 0);
+                    -moz-trasnform: translate3d(-100%, 0, 0);
+                    -ms-trasnform: translate3d(-100%, 0, 0);
+                    -o-trasnform: translate3d(-100%, 0, 0);
+                    transform: translate3d(-100%, 0, 0);
+                }
+                100% {
+                    opacity: 1;
+                    -webkit-transform: none;
+                    -moz-transform: none;
+                    -ms-transform: none;
+                    -o-transform: none;
+                    transform: none;
+                }
+            }
+            /* 右下角星星眨阿眨 */
+            @keyframes star {
+                0% {
+                    transform: translate(0,0) scale(.6);
+                    opacity: 0;
+                }
+                50% {
+                    transform: translate(-0.06rem, 0.24rem);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(-0.12rem, 0.24rem);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes winkle {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body class="active">
+    <div class="wrapper">
+        <div class="p1_title js-title turn-on">
+            <img src="./assets/images/title1.png" class="p1_title1">
+            <img src="./assets/images/title2.png" class="p1_title2">
+            <img src="./assets/images/title_3.png" class="p1_title3">
+        </div>
+        <!-- 标题的星星 -->
+        <img src="./assets/images/title_light.png" class="p1_title_light">
+        
+        <!-- 标题的闪烁星星 -->
+        <img src="./assets/images/star1.png" class="p1_title_star1">
+        <img src="./assets/images/star2.png" class="p1_title_star2">
+        <!-- 闪烁的星星 -->
+        <img src="./assets/images/star1.png" class="p1_dress_star1">
+        <img src="./assets/images/star2.png" class="p1_dress_star2">
+        <img src="./assets/images/star1.png" class="p1_dress_star3">
+        <img src="./assets/images/star2.png" class="p1_dress_star4">
+        <img src="./assets/images/star1.png" class="p1_dress_star5">
+        <img src="./assets/images/star2.png" class="p1_dress_star6">
+    </div>
+        <script src="./assets/js/jquery-3.1.1.min.js"></script>
+        <script>
+            (function(){
+                var $title = $('.js-title'),
+                    $wrapper = $('.wrapper'),
+                    musicFlag = false;
+                
+                // 音乐开关按钮
+                $wrapper.on('click', '.turn-on', function() {
+                    musicFlag = true;
+                }).on('click', '.turn-off', function() {
+                    musicFlag = false;
+                });
+
+                // 播放音乐
+                $wrapper.on('click', $title, function() {
+                    if (musicFlag) {
+                        var audio = new Audio('./assets/music/btn.mp3');
+                        audio.play();
+                    }
+                });
+                
+                
+            })(jQuery);
+        </script>
+    </body>
+</html>

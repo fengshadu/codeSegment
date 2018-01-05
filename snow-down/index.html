@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery雪花-jquery插件库</title>
+<link href="css/lanrenzhijia.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+<script src="js/snow.js"></script>
+<script src="http://www.jq22.com/js/jq.js"></script>
+
+<script>
+	createSnow('', 120);
+	$(function(){
+		var position = $("#bottom").position();
+		//alert(position.top);
+	})
+</script>
+
+<style>
+	#page{
+		height: 1900px;
+	}
+	
+</style>
+</head>
+
+<body id="introduction">
+	<div id="page">
+		<div id="container" class="content clearfix">
+			<div class="content1">
+				<h1>A long content</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consequat nunc in nibh feugiat posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. In lacinia sodales commodo. Nam lorem enim, facilisis ut iaculis ac, mattis non diam. Cras nec nibh vel lacus aliquet mattis. Nunc dapibus, lectus at molestie laoreet, sem velit aliquet velit, at consectetur diam neque vitae erat. Pellentesque justo dui, ullamcorper ac pulvinar a, convallis a nisi. Curabitur luctus, nunc quis varius tincidunt, quam lorem consectetur felis, eu congue tellus justo non velit. Etiam eget velit lacus. Pellentesque mollis luctus risus, sit amet blandit nulla accumsan nec. Nunc eu iaculis lorem. Aenean porta venenatis ultrices. Suspendisse et leo id ligula suscipit convallis sodales in enim. Ut iaculis ligula et tellus tristique consectetur. Cras mauris leo, lacinia vel pretium sagittis, lobortis ac risus. Cras turpis felis, accumsan nec placerat ac, gravida adipiscing metus.
+				</p>
+			</div>
+	  	</div>   
+	 </div>
+	 <div id="bottom">123</div>
+</body>
+</html>

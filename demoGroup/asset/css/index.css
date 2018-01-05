@@ -1,0 +1,14 @@
+.content-l{
+    border-right: 1px solid #e2e2e2;
+}
+.content-l a{
+    display: block;
+    margin-top: 10px;
+}
+code{
+    max-height: 400px;
+    overflow-y: scroll;
+}
+blockquote{
+    display: none;
+}

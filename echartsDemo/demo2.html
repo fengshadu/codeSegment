@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no">
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/echarts.min.js"></script>
+</head>
+<style>
+* {
+	font-size:12px;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+}
+.echarts{ overflow:hidden; height:350px;}
+</style>
+<body>
+
+
+    <div id="echarts1" class="echarts"></div>
+
+</body>
+<script>
+
+//趋势统计图数组
+var trend_obj={
+	time:['2016年01月','2016年02月','2016年03月','2016年04月','2016年05月','2016年06月'],   //投资月份数组
+	data:[320.06, 302.05, 301.04, 334.03, 390.02, 330.01], //投资金额数组
+}
+
+var echarts_loaddata=function(){
+ // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('echarts1'));
+	
+	var option = {
+		tooltip : {
+			trigger: 'axis',
+			backgroundColor:'rgb(255,255,255)',
+			borderColor:'rgb(255,82,82)',
+			textStyle:{ color:'#666',fontSize:12},
+			borderWidth:1,
+			padding:[3,5,3,5],
+			axisPointer:{
+				type: 'none',	
+			}
+		},
+		toolbox: {
+			show : true,
+			feature : {
+				mark : {show: true},
+				magicType : {show: true, type: ['line', 'bar']},
+				restore : {show: true},
+				//saveAsImage : {show: true}
+			}
+		},
+		clickable:false,
+		xAxis:[{
+			  axisLine:{
+				  lineStyle:{
+					color:"#666"	
+			  	  }
+			  },
+			  splitLine:false,	
+			  type: 'category',
+			  data: trend_obj.time,		//投资月份数组
+		}],
+		yAxis:[{	  
+		  	  axisLine:{
+				  lineStyle:{
+					color:"#666"	
+			  	  }
+			  },
+		      splitLine:false,	
+			  type : 'value',
+			  axisLabel : {
+				  formatter: '￥{value}'
+			  }
+		}],
+		series: [
+			{   
+				name: '投资额(￥)',
+				type: 'line',
+				//stack: '投资额',
+				label: {
+					normal: {
+						//show: true,
+						//position: 'insideRight'
+					}
+				},
+				data: trend_obj.data,		//投资金额数组
+				
+			}
+		]
+	};
+
+	// 使用刚指定的配置项和数据显示图表。
+	myChart.setOption(option);
+
+}
+
+echarts_loaddata();		//初始化统计图
+
+
+</script>
+</html>

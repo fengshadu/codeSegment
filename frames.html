@@ -1,0 +1,74 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+.phone-content {
+    position: absolute;
+    width: 380px;
+    height: 640px;
+    background-color: #f5f5f5;
+    top: 50%;
+    left: 50%;
+    margin: -320px 0 0 -190px;
+    overflow: hidden;
+}
+.current .animation-ele {
+    -webkit-animation: frames 1.5s steps(19);
+    animation: frames 1.5s steps(19);
+}
+.animation-ele {
+    background-image: url(./assets/images/frames.png);
+    width: 640px;
+    height: 846px;
+    background-size: 12160px;
+    top: -100px;
+    left: 50%;
+    margin-left: -320px;
+    background-position: 0;
+}
+.btn-again {
+    bottom: 50px;
+}
+style-index.css:3
+.ele {
+    position: absolute;
+}
+style-index.css:3
+.btn-again {
+    color: #fff;
+    font-size: 20px;
+    background-color: silver;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    left: 50%;
+    margin-left: -50px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="phone-content">
+            <div class="ele animation-ele"></div>
+            <div class="ele btn-again">Play</div>
+        </div>
+        <script src="http://tmtdemo.qq.com/animation-sample/dist/js/zepto.min.js"></script>
+        <script src="./assets/js/jquery-3.1.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".btn-again").on("click", function () {
+                    $(".phone-content").removeClass("current");
+                    setTimeout(function () {
+                        $(".phone-content").addClass("current");
+                    }, 100);
+                });
+            });
+        </script>
+    </body>
+</html>

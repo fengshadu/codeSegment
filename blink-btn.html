@@ -1,0 +1,47 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+.btn{
+    border-radius:4rem;
+    height:5rem;
+    line-height:5rem;
+    background-color:#ffe131;
+    color:#eb5106;
+    font-size:2rem;
+    border-bottom-color: #ce7413;
+    border-bottom-width: 0.3rem;
+    box-shadow:0 0.2rem 0.2rem 0rem #a52525;
+    font-weight: bold;
+    position:relative;
+    overflow:hidden;
+}
+
+.btn span{position:relative;font-weight: bold;}
+.btn:after,.btn:before{content:"";position:absolute;background:rgba(255,255,255,.45);-webkit-transform:rotateZ(30deg);transform:rotateZ(30deg);height:10rem;top: -2rem;}
+.btn:after{width:3rem;left:7rem;border: none;border-radius: 0;}
+.btn:before{width:0.5rem;left:8.3rem;}
+.blink:after,.blink:before{-webkit-animation:blink 1.5s infinite forwards;animation:blink 1.5s infinite forwards;}
+
+@-webkit-keyframes blink{
+    0%{-webkit-transform:translate3D(0,0,0) rotateZ(30deg);transform:translate3D(0,0,0) rotateZ(30deg);}
+    80%{opacity:1;}
+    100%{-webkit-transform: translate3D(140px,0,0) rotateZ(30deg);transform: translate3D(140px,0,0) rotateZ(30deg);opacity: 0;}
+}
+@keyframes blink{
+    0%{-webkit-transform:translate3D(0,0,0) rotateZ(30deg);transform:translate3D(0,0,0) rotateZ(30deg);}
+    80%{opacity:1;}
+    100%{-webkit-transform:translate3D(140px,0,0) rotateZ(30deg);transform:translate3D(140px,0,0) rotateZ(30deg);opacity:0;}
+}
+        </style>
+    </head>
+    <body>
+         <div class="btn blink"></div>
+         <script ../assets/js/ball.js></script>
+    </body>
+</html>

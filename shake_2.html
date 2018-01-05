@@ -1,0 +1,276 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+.ele {
+    position: absolute;
+}
+.screen-gap, .screen-outer, .screen-outer__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0
+}
+.screen-outer__bg {
+    height: 200%
+}
+.screen-outer__bg {
+    background: -webkit-radial-gradient(center, ellipse cover, #f84645 0, #b10d07 100%)
+}
+.screen-gap {
+    background: -webkit-radial-gradient(center, ellipse cover, #f84645 0, #b10d07 100%)
+}
+.screen-gap__open-flower {
+    background-image: url(./assets/images/shake_open_flower.png);
+    width: 61px;
+    height: 70px;
+    background-size: 61px;
+    background-position: 50%;
+    top: 50%;
+    left: 50%;
+    margin: -35px 0 0 -30.5px;
+}
+ .screen-outer__up-wrap {
+    width: 100%;
+    height: 50%;
+    top: 0;
+    left: 0;
+    overflow: hidden
+}
+.screen-outer__down-wrap {
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+    overflow: hidden
+}
+
+.screen-outer__down-wrap .screen-outer__bg {
+    bottom: 0;
+    top: auto
+}
+.screen-outer__hand-up {
+    background-image: url(./assets/images/shake_drop_hand_up.png);
+    width: 147px;
+    height: 272px;
+    background-size: 147px;
+    background-position: 50%;
+    bottom: 0;
+    left: 50%;
+    margin-left: -70px;
+    display: none
+}
+.screen-outer__hand-down {
+    background-image: url(./assets/images/shake_drop_hand_down.png);
+    width: 147px;
+    height: 80px;
+    background-size: 147px;
+    background-position: 50%;
+    top: -1px;
+    left: 50%;
+    margin-left: -70px;
+    display: none
+}
+
+.screen-outer__up-bar {
+    width: 100%;
+    height: 2px;
+    background-color: #fd5757;
+    bottom: 0;
+    left: 0;
+    display: none
+}
+.screen-outer__down-bar {
+    width: 100%;
+    height: 2px;
+    background-color: #fd5757;
+    top: 0;
+    left: 0;
+    display: none
+}
+.screen__content {
+    position: absolute;
+    width: 320px;
+    height: 504px;
+    top: 50%;
+    left: 50%;
+    margin: -252px 0 0 -160px
+}
+.screen-outer__drop-hand-wrap {
+    width: 147px;
+    height: 352px;
+    top: -20px;
+    left: 50%;
+    margin-left: -70px
+}
+.screen-outer__drop-hand-up {
+    background-image: url(./assets/images/shake_drop_hand_up.png);
+    width: 147px;
+    height: 272px;
+    background-size: 147px;
+    background-position: 50%;
+    top: 0;
+    left: 0
+}
+.screen-outer__drop-hand-down {
+    background-image: url(./assets/images/shake_drop_hand_down.png);
+    width: 147px;
+    height: 80px;
+    background-size: 147px;
+    background-position: 50%;
+    bottom: 1px;
+    left: 0
+}
+.btn-again {
+    top: 500px
+}
+.btn-again {
+    color: #fff;
+    font-size: 20px;
+    background-color: silver;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    left: 50%;
+    margin-left: -50px;
+}
+
+@-webkit-keyframes upWrapMove {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    30% {
+        -webkit-transform: translate3d(0, -55px, 0);
+        transform: translate3d(0, -55px, 0)
+    }
+    50% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    to {
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+    }
+}
+@keyframes upWrapMove {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    30% {
+        -webkit-transform: translate3d(0, -55px, 0);
+        transform: translate3d(0, -55px, 0)
+    }
+    50% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    to {
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+    }
+}
+@-webkit-keyframes downWrapMove {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    30% {
+        -webkit-transform: translate3d(0, 55px, 0);
+        transform: translate3d(0, 55px, 0)
+    }
+    50% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    to {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
+}
+@keyframes downWrapMove {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    30% {
+        -webkit-transform: translate3d(0, 55px, 0);
+        transform: translate3d(0, 55px, 0)
+    }
+    50% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    to {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
+}
+.current .screen-outer__drop-hand-wrap {
+    display: none
+}
+.current .screen-outer__down-bar, .current .screen-outer__hand-down, .current .screen-outer__hand-up, .current .screen-outer__up-bar {
+    display: block
+}
+.current .screen-outer__up-wrap {
+    -webkit-animation: upWrapMove 1.8s ease-in .1s forwards;
+    animation: upWrapMove 1.8s ease-in .1s forwards
+}
+.current .screen-outer__down-wrap {
+    -webkit-animation: downWrapMove 1.8s ease-in .1s forwards;
+    animation: downWrapMove 1.8s ease-in .1s forwards
+} 
+        </style>
+    </head>
+    <body>
+    <div class="phone-content">
+        <div class="screen-gap">
+            <div class="ele screen-gap__open-flower"></div>
+        </div>
+        <div class="screen-outer">
+           <div class="ele screen-outer__up-wrap">
+               <div class="ele screen-outer__bg"></div>
+               <div class="ele screen-outer__hand-up"></div>
+               <div class="ele screen-outer__up-bar"></div>
+           </div>
+           <div class="ele screen-outer__down-wrap">
+               <div class="ele screen-outer__bg"></div>
+               <div class="ele screen-outer__hand-down"></div>
+               <div class="ele screen-outer__down-bar"></div>
+           </div>
+           <div class="screen__content">
+               <div class="ele screen-outer__drop-hand-wrap">
+                   <div class="ele screen-outer__drop-hand-up"></div>
+                   <div class="ele screen-outer__drop-hand-down"></div>
+               </div>
+           </div>
+       </div>
+        <div class="ele btn-again">Play</div>
+        </div>
+        <audio src="./assets/music/shake.mp3" preload="auto" id="musicShake"></audio>
+        <script src="http://tmtdemo.qq.com/animation-sample/dist/js/zepto.min.js"></script>
+        <script src="./assets/js/jquery-3.1.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".btn-again").on("click", function () {
+                    $(".phone-content").removeClass("current");
+                    setTimeout(function () {
+                        $(".phone-content").addClass("current");
+                        setTimeout(function () {
+                            document.querySelector("#musicShake").play();
+                        }, 500);
+                    }, 100);
+                });
+            });
+        </script>
+    </body>
+</html>

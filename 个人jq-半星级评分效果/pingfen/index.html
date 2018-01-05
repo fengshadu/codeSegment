@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta name="renderer" content="webkit"/>
+<title>评分效果</title>
+<link rel="stylesheet" href="css/base.css" />
+<script src="js/jquery-1.10.2.min.js"></script>
+<style>
+.grade-box {width: 400px;margin: auto; padding-top:100px;color: #747474;}
+.grade-box .icon-star{ float:left; width:14px;margin-right:5px;background:url(images/icon2.jpg) no-repeat;}
+.grade-box .icon-star .star{ float:left; width:7px; height:13px; }
+.grade-box .icon-star .s-l.curr{ background:url(images/icon1.jpg) no-repeat;}
+.grade-box .icon-star .s-r.curr{ background:url(images/icon1.jpg) no-repeat right center ;}
+.grade-box .score{ display:none; padding-left:10px; color:#f00;}
+
+.evaluate{ text-align:center; font-size:72px;}
+</style>
+</head>
+
+<body>
+
+<div class="grade-box clearfix">
+	<div class="star-item">
+        <div class="icon-star clearfix">
+            <i class="star s-l"></i>
+            <i class="star s-r"></i>
+        </div>
+        <div class="icon-star clearfix">
+            <i class="star s-l"></i>
+            <i class="star s-r"></i>
+        </div>
+        <div class="icon-star clearfix">
+            <i class="star s-l"></i>
+            <i class="star s-r"></i>
+        </div>
+        <div class="icon-star clearfix">
+            <i class="star s-l"></i>
+            <i class="star s-r"></i>
+        </div>
+        <div class="icon-star clearfix">
+            <i class="star s-l"></i>
+            <i class="star s-r"></i>
+        </div>
+        <span class="score">0.0</span>
+    </div>
+</div>
+
+
+<h1 class="evaluate"></h1>
+<script>
+$( function(){
+	var grade_evaluate= ["偏低","不错","很棒",];  //0-2，2.5-3.5，4-5
+	
+	/** 分数选择 插件 **/
+	function grade_option(_this){
+		var index=_this.parent().index()+0.5;		//得到父元素的索引，作为分数
+		//分数有小数，右半星+0.5
+		if(_this.hasClass('s-r')){
+			index+=0.5;	
+		}
+		//当前兄弟元素操作class
+		_this.addClass('curr').prevAll('i').addClass('curr').end().nextAll('i').removeClass('curr');	
+		//当前父元素的兄弟元素操作class	
+		_this.parent().prevAll().children('i').addClass('curr').end().end().nextAll().children('i').removeClass('curr');
+		
+		if(index<2.5){
+			$(".evaluate").text(grade_evaluate[0]);
+		}else if(index>3.5){
+			$(".evaluate").text(grade_evaluate[2]);
+		}else{
+			$(".evaluate").text(grade_evaluate[1]);
+		}
+		
+		//显示分数	
+		_this.parents('.star-item').find(".score").text(index+"分").show();	
+		
+		return index;   //返回分数
+	}
+	
+	$(".grade-box .icon-star .star").mouseenter(function(){
+		var _this=$(this);
+		grade_option(_this)
+	}).click(function(){
+		var _this=$(this);
+		var score=grade_option(_this);
+		$(this).parents('.star-item').attr('score',score);	  //父元素得到分数
+		console.log(score);
+	})
+	
+    $(".grade-box .star-item").mouseleave( function(){
+		var score=$(this).attr('score');	   //得到选择的分数
+		var icon_star=$(this).find('.icon-star')	//得到图标
+		if(score){	//判断是否选择到分数
+			var int_score=Math.ceil(score);		//因为分数有小数，必须是整数
+			if(int_score==score){ //如果有小数点，就不相等。是整数，就相等
+				icon_star.eq(int_score-1).find('.star').addClass('curr');
+			}else{
+				icon_star.eq(int_score-1).find('.s-l').addClass('curr');
+			}
+		    $(this).find(".score").text(score+"分").show();
+		}else{
+			$(this).find(".star").removeClass('curr');
+			$(this).find('.score').hide();
+		}
+	})
+	/** 分数选择 插件 end **/
+
+})
+</script>
+</body>
+</html>

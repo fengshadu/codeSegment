@@ -1,0 +1,92 @@
+﻿	      
+	  
+	       #这是我个人整理的swiper2调用，适用多种情况，通用的代码
+
+
+
+
+		#html
+
+		<div class="js_swiperBox" data-row="4" data-loop="false">
+			<div class="swiper-container js_swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+					   <div class="imgBox"><img class="pic" src="images/pic237x75.jpg" /></div>
+					</div>
+					<div class="swiper-slide">
+					   <div class="imgBox"><img class="pic" src="images/pic237x75.jpg" /></div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-pagination js_swiperPagination"></div>
+			<div class="cable-button-prev js_swiperPrev swiper-button"></div>
+			<div class="cable-button-next js_swiperNext swiper-button"></div>
+		</div>
+		
+
+
+                #js
+		
+		//.js_swiperBox 的属性说明
+		
+		//data-row      显示的列数，默认为1
+		//data-loop     循环轮番，默认为true
+		//data-autoplay 自动轮番，默认为0
+		//data-effect   切换效果，默认为slide
+	
+		//.js_swiper     	   控制不同swiper的调用
+		//.js_swiperPagination 控制不同swiper页数 切换
+		//.js_swiperPrev       控制上一页
+		//.js_swiperNext       控制下一页
+		
+		var swiper=[];
+		var js_swiperBox=$(".js_swiperBox");
+		js_swiperBox.each(function(index) {
+			var row;			//列数
+			var autoplay;	    //自动切换
+			var loop;			//循环
+			var effect;			//切换效果
+			typeof $(this).attr("data-row")=="string" ? row=Number($(this).attr("data-row")):row=1;  //得到列数,默认为1
+			if($(this).find(".swiper-slide").length>row){   ///如果列数超过1行
+				$(this).attr("data-loop")=="false" ? loop=false:loop=true;								//是否循环，默认为true
+				//得到自动时间，默认为0
+				typeof $(this).attr("data-autoplay")=="string" ? autoplay=$(this).attr("data-autoplay") :  autoplay=0;
+				
+				typeof $(this).attr("data-effect")=="string" ? effect=$(this).attr("data-effect") :  effect='slide';  
+				 
+				$(this).find(".js_swiper").addClass("js_swiper"+index);
+				$(this).find(".js_swiperPagination").addClass("js_swiperPagination"+index);
+				swiper[index]= new Swiper('.js_swiper'+index, {
+					slidesPerView:row,
+					loop: loop,
+					autoplay:autoplay,
+					autoplayDisableOnInteraction:false,
+					pagination : '.js_swiperPagination'+index,
+					paginationClickable:true,
+					effect:effect
+				});
+				$(this).find(".js_swiperPrev").click(function(e){
+					e.preventDefault();
+					swiper[index].swipePrev();
+				});
+				$(this).find(".js_swiperNext").click(function(e){
+					e.preventDefault()
+					swiper[index].swipeNext();
+				});
+				$(this).mouseenter(function(){
+					swiper[index].stopAutoplay();
+				});
+				$(this).mouseleave(function(){
+					swiper[index].startAutoplay();
+				});
+			}else{
+				$(this).find(".swiper-slide").css({"width":100/row+"%"});	 ///如果列数没有超过1行，不调用swiper，隐藏按钮
+				$(this).find(".js_swiperPrev").hide();
+				$(this).find(".js_swiperNext").hide();
+			}
+		});
+		
+
+
+		
+	

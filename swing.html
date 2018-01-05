@@ -1,0 +1,36 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .swing {
+                width: 88px;
+                height:  166px;
+                margin: 0 auto;
+                background-image: url('./assets/images/swing.png');
+                transform-origin: 53px 12px;   /* 在鞭炮节点那里为旋转原点 */
+            }
+            .ani-swing {
+                -webkit-animation: swing 1s ease-in-out infinite alternate;
+            }
+            @keyframes swing {
+                0% {
+                    transform: rotate(15deg);
+                }
+                100% {
+                    transform: rotate(-15deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="swing ani-swing"></div>
+    </body>
+</html>

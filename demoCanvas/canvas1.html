@@ -1,0 +1,67 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <style>
+            canvas {
+                background: #b2b2b2;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>画圆</h1>
+        <canvas id="circle" width="200" height="100">
+            your broswer does not support the canvas ele.
+        </canvas>
+        <canvas id="circle2" width="200" height="100">
+            your broswer does not support the canvas ele.
+        </canvas>
+        <h1>画线条</h1>
+        <canvas id="line" width="400" height="400">your broswer does not support the canvas ele</canvas>
+        
+        <h1>画渐变</h1>
+        <canvas id="gradient" width="400" height="400">your broswer does not support the canvas ele</canvas>
+        <script>
+            var circle = document.getElementById('circle');
+            var cxt = circle.getContext('2d');
+
+            cxt.fillStyle = '#ff0000';
+            cxt.beginPath();
+            cxt.arc(70, 58, 25, 0, Math.PI*2/4, true);
+            cxt.closePath();
+            cxt.fill();
+
+            var circle2 = document.getElementById('circle2');
+            var cxt2 = circle.getContext('2d');
+
+            cxt2.fillStyle = '#ff0000';
+            cxt2.beginPath();
+            cxt2.arc(170, 58, 25, 0, Math.PI*2/4);
+            cxt2.closePath();
+            cxt2.fill();
+
+            // 画线条
+            var line = document.getElementById('line');
+            var lineCxt = line.getContext('2d');
+            lineCxt.moveTo(0, 0);
+            lineCxt.lineTo(150, 150);
+            lineCxt.lineTo(10, 50);
+            lineCxt.stroke();
+
+            // 画渐变
+            var gradient = document.getElementById('gradient');
+            var gradientCxt = gradient.getContext('2d');
+
+            var grd = gradientCxt.createLinearGradient(0, 0, 175, 50);
+            grd.addColorStop(0, '#000');
+            grd.addColorStop(1, '#ff0000');
+            gradientCxt.fillStyle= grd;
+            gradientCxt.fillRect(0, 0, 175, 50);
+
+        </script>
+    </body>
+</html>

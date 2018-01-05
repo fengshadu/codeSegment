@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .ball {
+                width: 100%;
+                margin: 0 auto;
+            }
+            .ball img {
+                display: block;
+                margin: 0 auto;
+                /*animation: bounce 3s;*/
+                animation: bounce2 3s ease-in;
+            }
+            @keyframes bounce {
+                60%, 80%, to {
+                    transform: translateY(350px);
+                }
+                70% {
+                    transform: translateY(250px);
+                }
+                90% {
+                    transform: translateY(300px);
+                }
+            }
+
+            @keyframes bounce2 {
+                60%, 80%, to {
+                    transform: translateY(400px);              
+                    animation-timing-function: ease-out;                
+                }
+                70% {
+                    transform: translateY(300px);
+                }
+                90% {
+                    transform: translateY(360px);
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="ball"><img src="./assets/images/ball.jpg" alt=""></div>
+    </body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no">
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/echarts.min.js"></script>
+</head>
+<style>
+* {
+	font-size:12px;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+}
+.main{ overflow:hidden;}
+</style>
+<body>
+<div class="quan">
+  <div class="ban">
+  	 <div id="main1" class="main"></div>
+  </div>
+  <div class="ban">
+    <div id="main2" class="main"></div>
+  </div>
+</div>
+</body>
+<script>
+
+function loaddata(){
+ // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main2'));
+	
+	var option = {
+		tooltip : {
+			trigger: 'axis',
+			backgroundColor:'rgb(255,255,255)',
+			borderColor:'rgb(255,82,82)',
+			textStyle:{ color:'#666',fontSize:12},
+			borderWidth:1,
+			padding:[3,5,3,5],
+			axisPointer:{
+				type: 'none',	
+			}
+		},
+		toolbox: {
+			show : true,
+			feature : {
+				mark : {show: true},
+				magicType : {show: true, type: ['line', 'bar']},
+				restore : {show: true},
+				//saveAsImage : {show: true}
+			}
+		},
+		clickable:false,
+		xAxis:[{
+			  axisLine:{
+				  lineStyle:{
+					color:"#666"	
+			  	  }
+			  },
+			  splitLine:false,	
+			  type: 'category',
+			  data: ['2016年01月','2016年02月','2016年03月','2016年04月','2016年05月','2016年06月'],
+		}],
+		yAxis:[{	  
+		  	  axisLine:{
+				  lineStyle:{
+					color:"#666"	
+			  	  }
+			  },
+		      splitLine:false,	
+			  type : 'value',
+			  axisLabel : {
+				  formatter: '￥{value}'
+			  }
+		}],
+		series: [
+			{   
+				name: '投资额(￥)',
+				type: 'line',
+				//stack: '投资额',
+				label: {
+					normal: {
+						//show: true,
+						//position: 'insideRight'
+					}
+				},
+				data: [320.06, 302.05, 301.04, 334.03, 390.02, 330.01],
+				
+			}
+		]
+	};
+
+	// 使用刚指定的配置项和数据显示图表。
+	myChart.setOption(option);
+
+}
+
+function init(){
+	var window_hight=$(window).height();
+	$(".main").css({"height":window_hight/2+"px"});
+	loaddata();
+}
+init();
+$(window).resize(init);
+
+
+</script>
+</html>

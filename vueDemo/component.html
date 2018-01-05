@@ -1,0 +1,41 @@
+<!DOCtype html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      
+    </head>
+    <body>
+        <!-- 组件构建应用 -->
+        <ol>
+            <todo-item></todo-item>
+        </ol>
+        <div id="app7">
+            <ol>
+                <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+            </ol>
+        </div>
+
+        <script src="../assets/js/vue.js"></script>
+        <script>
+            Vue.component('todo-item', {
+                props: ['todo'],
+                template: '<li>{{todo.text}}</li>'
+            })
+
+            var app7 = new Vue({
+                el: '#app7',
+                data: {
+                    groceryList: [
+                        {text: 'apple'},
+                        {text: 'banana'},
+                        {text: 'pear'}
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>
