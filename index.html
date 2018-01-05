@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>大熔炉</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./favicon.ico" rel="shortcut icon">
+        <style>
+        /* reset s */
+        html{font-size:10px}
+        body,dd,dl,dt,form,h1,h2,input,li,ol,p,select,ul{margin:0;padding:0}
+        article,aside,dialog,figure,footer,header,hgroup,nav,section{display:block}
+        h1,h2,input,select,textarea{font-size:100%;font-weight:400;vertical-align:middle}
+        dl,ol,ul{list-style:none}
+        img,input{border:none}
+        input{background:0 0;vertical-align:top}
+        textarea{word-wrap:break-word;resize:none}
+        input,select,textarea{-webkit-appearance:none;border:none;outline:0}
+        /* reset e */
+        body {
+            background: #f5f5d5;
+        }
+        a {
+            display: inline-block;
+            margin: .5rem;
+            padding: 1rem;
+            border-radius: .5rem;
+            font-size: 1.8rem;
+            color: #556677;
+            text-decoration: none;
+            -webkit-box-shadow: inset 0px 1px 0px 0px #eeeeee;
+            box-shadow: inset 0px 1px 0px 0px #eeeeee;
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #aad2f0), color-stop(1, #8bc1ed) );
+            background: -moz-linear-gradient( center top, #aad2f0 5%, #8bc1ed 100% );
+            background-color: #aad2f0;
+            border: 1px solid #dcdcdc;
+            text-shadow: 1px 1px 0px #eeeeee;
+        }
+        h2 {
+            background: #eae6d7 !important;
+            border-radius: 6px 6px 6px 6px !important;
+            color: #49529c;
+            font-family: "微软雅黑" , "宋体" , "黑体" ,Arial;
+            font-size: 17px;
+            font-weight: bold;
+            height: 25px;
+            line-height: 25px;
+            margin: 15px 0 !important;
+            padding: 5px 0 5px 20px;
+            text-shadow: 2px 2px 3px #e6e8da;
+        }
+        .left {
+            float: left;
+            width: 60%;
+        }
+        .right {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+        }
+        .right iframe {
+            width: 100%;
+            height: 100%;
+            padding: 1%;
+            border: 5px solid #eae6d7;
+            box-sizing: border-box;
+            box-shadow: inset 0px 1px 0px 0px #eeeeee;
+        }
+        .right a {
+            margin: 0;
+            padding: 0;
+            background: initial;
+            box-shadow: initial;
+            border: initial;
+        }
+
+        </style>
+    </head>
+    <body>
+    <div class="left" id="left">
+        <div>
+            <a href="javascript:;" data-href="blink.html">文字闪烁</a>
+            <a href="javascript:;" data-href="background.html">背景巧用</a>
+            <a href="javascript:;" data-href="ball-rebound.html">小球回弹效果</a>
+            <a href="javascript:;" data-href="ellipsis.html">溢出省略号...</a>
+            <a href="javascript:;" data-href="water-spread.html">水波纹散开</a>
+            <a href="javascript:;" data-href="white-mask.html">内容过多底部白色遮罩</a>
+            <a href="javascript:;" data-href="close-btn.html">关闭按钮xx</a>
+            <a href="javascript:;" data-href="five-star.html">绘制五角星</a>
+            <a href="javascript:;" data-href="linear-five-star.html">渐变五角星</a>
+            <a href="javascript:;" data-href="arrow-animate.html">h5页面下滑箭头</a>
+            <a href="javascript:;" data-href="canvas-lock.html">手机canvas九宫格解锁效果</a>
+            <a href="javascript:;" data-href="figure.roll/demo1.html">滚动的数字</a>
+            <a href="javascript:;" data-href="keyboard-demo/keyboard-demo/pay.html">模拟手机键盘</a>
+            <a href="javascript:;" data-href="snow-down/index.html">飘雪花效果</a>
+            <a href="javascript:;" data-href="bubble/demo.html">气泡效果</a>
+            <a href="javascript:;" data-href="waterVacuole/demo.html">水泡效果</a>
+            <a href="javascript:;" data-href="ani-loading.html">loading gif</a>
+            <a href="javascript:;" data-href="css3-ring/index.html">css3动画圆环</a>
+            <a href="javascript:;" data-href="animatePage/index.html">页面动画切换</a>
+            <a href="javascript:;" data-href="qq-moveleft/index.html">仿QQ左滑删除</a>
+            <a href="javascript:;" data-href="zp/index.html">css3自适应转盘</a>
+            <a href="javascript:;" data-href="identityCheck.js">身份证强校验</a>
+            <a href="javascript:;" data-href="zepto-lazyload.js">zepto懒加载</a>
+            <a href="javascript:;" data-href="swiper-use.txt">swiper调用整理</a>
+            <a href="javascript:;" data-href="btn-delay.html">按钮延迟动画</a>
+            <a href="javascript:;" data-href="music-switch.html">播放音乐开关</a>
+            <a href="javascript:;" data-href="blink-word.html">女王节闪烁星星+音乐</a>
+        </div>
+        
+        <div>
+            <h2>css3动画类</h2>
+            <a href="javascript:;" data-href="swing.html">摇摆效果</a>
+            <a href="javascript:;" data-href="snow-down.html">雪花飘落效果</a>
+            <a href="javascript:;" data-href="shake.html">摇一摇分屏</a>
+            <a href="javascript:;" data-href="frames.html">逐帧动画</a>
+            <a href="javascript:;" data-href="wave.html">水波浪</a>
+            <a href="javascript:;" data-href="particles.js-master/demo/index.html">知乎背景动画</a>
+        </div>
+
+        <div>
+            <h2>插件系列</h2>
+            <a href="javascript:;" data-href="three-level-link/three-level-link/index.html">移动端三级联动</a>
+            <a href="javascript:;" data-href="echartsDemo/demo.html">echart统计图</a>
+        </div>
+
+        <div>
+            <h2>日常需求常用模块</h2>
+            <a href="javascript:;" data-href="slider-bar.html">100%滑动条</a>
+        </div>
+
+        <div>
+            <h2>资源网站</h2>
+            <a href="javascript:;" data-href="https://developer.mozilla.org/zh-CN/"> Mozilla Developer Network </a>
+        </div>
+    </div>
+    <div class="right">
+        <p><h2 id="right-title">请点击左侧查看效果</h2></p>
+        <iframe src="" id="right-iframe"></iframe>
+    </div>
+
+    <script src="./assets/js/jquery-3.1.1.min.js"></script>
+    <script src="./index.js"></script>
+    </body>
+</html>
